@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>FOOD DELIVERY WEBPAGE </h1>
+    <% if (locals.fooditem) { %>
+        <p>Order Placed <%= fooditem %> quantity <%= quantity %></p>
+    <% } %>
+    <form method="post" action = '/url'>
+        <label for="fooditems">SELECT THE FOOD THAT YOU WANT TO ORDER.</label>
+        <select name="fooditems" id="fooditems">
+        <option value="kadhaipaneer">kadhaipaneer</option>
+        <option value="malaikofta">malaikofta</option>
+        <option value="mixveg">mixveg</option>
+        <option value="friedmomos">friedmomos</option>
+        </select>
+
+        <label for="quantity">SELECT THE QUANTITY.</label>
+        <select name="quantity" id="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        </select>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <div>
+        <% if (locals.foodItem) { %>
+            <table>
+                <thead>
+                    <th>S.No</th>
+                    <th>FoodItem</th>
+                    <th>quantity</th>
+                    <th>Date</th>
+                </thead>
+                <tbody>
+                    <% foodItem.forEach((url,index) => { %>
+                        <tr>
+                            <td><%= index +1 %></td>
+                            <td><%= url.foodItem%></td>
+                            <td><%= url.quantity%></td>
+                            <td><%= url.visitHistory%></td>
+                        </tr>
+                         
+                        <% }) %>
+
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>
+
